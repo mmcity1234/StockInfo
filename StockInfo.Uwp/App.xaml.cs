@@ -47,7 +47,7 @@ namespace StockInfo.Uwp
             // 只確定視窗是作用中
             if (rootFrame == null)
             {
-                var setup = new StockInfo.App.Setup(rootFrame);
+                var setup = new StockInfo.Uwp.Setup(rootFrame);
                 setup.Initialize();
 
                 var start = Mvx.Resolve<IMvxAppStart>();

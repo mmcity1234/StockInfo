@@ -95,7 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Application.cs" />
+    <Compile Include="BootApplication.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -107,6 +107,8 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="StockInfo.Uwp_TemporaryKey.pfx" />
+    <PRIResource Include="Strings\zh-TW\ErrorMessages.resw" />
+    <PRIResource Include="Strings\zh-TW\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />

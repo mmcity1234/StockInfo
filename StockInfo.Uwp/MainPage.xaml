@@ -8,6 +8,56 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <NavigationView Canvas.ZIndex="0">
+            <NavigationView.MenuItems>
+                <NavigationViewItemHeader Content="Hello>"/>
+                <NavigationViewItem Icon="Play" Content="Menu Item1" Tag="StockInfo" />
+                <NavigationViewItemSeparator/>
+                <NavigationViewItem Icon="Save" Content="Menu Item2" Tag="ForeignInvestor" />
+                
+            </NavigationView.MenuItems>
 
+            <NavigationView.AutoSuggestBox>
+                <AutoSuggestBox x:Name="ASB" QueryIcon="Find"/>
+            </NavigationView.AutoSuggestBox>
+
+            <NavigationView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid Margin="24,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock 
+                           FontSize="28"
+                           VerticalAlignment="Center"
+                           Text="Welcome"/>
+                        <CommandBar Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            DefaultLabelPosition="Right"
+                            Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
+                            <AppBarButton Label="Refresh" Icon="Refresh"/>
+                            <AppBarButton Label="Import" Icon="Import"/>
+                        </CommandBar>
+                    </Grid>
+                </DataTemplate>
+            </NavigationView.HeaderTemplate>
+
+            <NavigationView.PaneFooter>
+                <HyperlinkButton x:Name="MoreInfoBtn"
+                             Content="More info"
+                             Margin="12,0"/>
+            </NavigationView.PaneFooter>
+
+            <Frame x:Name="ContentFrame" Margin="24">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition/>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+
+        </NavigationView>
     </Grid>
 </Page>

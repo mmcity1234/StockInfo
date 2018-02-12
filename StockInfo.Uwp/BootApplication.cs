@@ -8,7 +8,7 @@ using MvvmCross.Platform.IoC;
 
 namespace StockInfo.Uwp
 {
-    public class Application : MvvmCross.Core.ViewModels.MvxApplication
+    public class BootApplication : MvvmCross.Core.ViewModels.MvxApplication
     {
         public override void Initialize()
         {
