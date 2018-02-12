@@ -13,6 +13,7 @@ namespace StockInfo.Uwp
     {
         public Setup(Frame rootFrame) : base(rootFrame)
         {
+
         }
 
         protected override IMvxApplication CreateApp()
