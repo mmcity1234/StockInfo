@@ -47,24 +47,26 @@ namespace StockInfo.Uwp
             // 只確定視窗是作用中
             if (rootFrame == null)
             {
-                var setup = new StockInfo.Uwp.Setup(rootFrame);
-                setup.Initialize();
+                // 建立框架做為巡覽內容，並巡覽至第一頁
+                rootFrame = new Frame();
 
-                var start = Mvx.Resolve<IMvxAppStart>();
-                start.Start();
+                rootFrame.NavigationFailed += OnNavigationFailed;
 
-                //// 建立框架做為巡覽內容，並巡覽至第一頁
-                //rootframe = new frame();
+                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                {
+                    //todo: 從之前暫停的應用程式載入狀態
+                }
+                // 將框架放在目前視窗中
+                Window.Current.Content = rootFrame;
 
-                //rootframe.navigationfailed += onnavigationfailed;
+                if(rootFrame.Content == null)
+                {
+                    var setup = new StockInfo.Uwp.Setup(rootFrame);
+                    setup.Initialize();
 
-                //if (e.previousexecutionstate == applicationexecutionstate.terminated)
-                //{
-                //    //todo: 從之前暫停的應用程式載入狀態
-                //}
-
-                //// 將框架放在目前視窗中
-                //window.current.content = rootframe;
+                    var start = Mvx.Resolve<IMvxAppStart>();
+                    start.Start();
+                }
             }
 
             if (e.PrelaunchActivated == false)

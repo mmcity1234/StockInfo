@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MvvmCross.Uwp.Views;
+using StockInfo.Uwp.Views;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,11 +22,12 @@ namespace StockInfo.Uwp
     /// <summary>
     /// 可以在本身使用或巡覽至框架內的空白頁面。
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class MainPage : MvxWindowsPage
     {
         public MainPage()
         {
             this.InitializeComponent();
+            DataContext = new MainViewModel();
         }
     }
 }

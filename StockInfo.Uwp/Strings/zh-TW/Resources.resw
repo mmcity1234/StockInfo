@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MainPage.NavigationItem.ForeignInvestor" xml:space="preserve">
+  <data name="MainPage_NavigationItem_ForeignInvestor.Content" xml:space="preserve">
     <value>三大法人</value>
   </data>
-  <data name="MainPage.NavigationItem.Info" xml:space="preserve">
+  <data name="MainPage_NavigationItem_Info.Content" xml:space="preserve">
     <value>基本資訊</value>
   </data>
 </root>

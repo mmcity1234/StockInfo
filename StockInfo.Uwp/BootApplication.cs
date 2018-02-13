@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using MvvmCross.Platform.IoC;
+using StockInfo.Uwp.Views;
 
 namespace StockInfo.Uwp
 {
@@ -18,7 +19,7 @@ namespace StockInfo.Uwp
                 .RegisterAsLazySingleton();
 
 
-            //RegisterAppStart<ViewModels.FirstViewModel>();
+            RegisterNavigationServiceAppStart<MainViewModel>();
         }
     }
 }
