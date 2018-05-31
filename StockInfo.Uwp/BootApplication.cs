@@ -5,21 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 
 using MvvmCross.Platform.IoC;
-using StockInfo.Uwp.Views;
+using StockInfo.Uwp.ViewModels;
+using System.Reflection;
+using MvvmCross.Platform;
+using StockInfo.Uwp.Common.IoC;
 
 namespace StockInfo.Uwp
 {
     public class BootApplication : MvvmCross.Core.ViewModels.MvxApplication
     {
+        
         public override void Initialize()
         {
-            CreatableTypes()
-                .EndingWith("Service")           
-                .AsInterfaces()
-                .RegisterAsLazySingleton();
-
-
             RegisterNavigationServiceAppStart<MainViewModel>();
+
+            // Mvx DI
+
+            IocProvider.Instance.Container.Build();
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using MvvmCross.Uwp.Views;
-using StockInfo.Uwp.Views;
+using StockInfo.Uwp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,7 +27,6 @@ namespace StockInfo.Uwp
         public MainPage()
         {
             this.InitializeComponent();
-            DataContext = new MainViewModel();
         }
     }
 }

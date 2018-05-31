@@ -5,18 +5,34 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:StockInfo.Uwp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
+      xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:converters="using:StockInfo.Uwp.Common.Converter"
     mc:Ignorable="d">
+    
+    <Page.Resources>
+        <converters:AutoSuggestQueryParameterConverter x:Key="AutoSuggestConverter" />
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <NavigationView  >
             <NavigationView.MenuItems>
                 <NavigationViewItem Icon="Play" x:Uid="MainPage_NavigationItem_Info" Tag="StockInfo" />
-                <NavigationViewItem Icon="Save" x:Uid="MainPage_NavigationItem_ForeignInvestor" Tag="ForeignInvestor" />                
+                <NavigationViewItem Icon="Save" x:Uid="MainPage_NavigationItem_ForeignInvestor" Tag="ForeignInvestor" />
             </NavigationView.MenuItems>
 
             <NavigationView.AutoSuggestBox>
-                <AutoSuggestBox x:Name="ASB" QueryIcon="Find"/>
+                <AutoSuggestBox x:Uid="MainPage_SuggestionBox" QueryIcon="Find">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="QuerySubmitted">
+                            <core:InvokeCommandAction Command="{Binding AutoSuggestSearchCommand}" InputConverter="{StaticResource AutoSuggestConverter}" />
+                        </core:EventTriggerBehavior>
+                        <core:EventTriggerBehavior EventName="TextChanged">
+                            <core:InvokeCommandAction Command="{Binding AutoSuggestTextChangeCommand}" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                </AutoSuggestBox>
             </NavigationView.AutoSuggestBox>
 
             <NavigationView.HeaderTemplate>

@@ -123,4 +123,7 @@
   <data name="MainPage_NavigationItem_Info.Content" xml:space="preserve">
     <value>基本資訊</value>
   </data>
+  <data name="MainPage_SuggestionBox.PlaceholderText" xml:space="preserve">
+    <value>股票代號或簡稱</value>
+  </data>
 </root>
