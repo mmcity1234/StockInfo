@@ -17,11 +17,7 @@ namespace StockInfo.Uwp
         
         public override void Initialize()
         {
-            RegisterNavigationServiceAppStart<MainViewModel>();
-
-            // Mvx DI
-
-            IocProvider.Instance.Container.Build();
+            RegisterNavigationServiceAppStart<MainViewModel>();           
         }
     }
 }

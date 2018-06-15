@@ -27,6 +27,7 @@ namespace StockInfo.Uwp
         public MainPage()
         {
             this.InitializeComponent();
+
         }
     }
 }

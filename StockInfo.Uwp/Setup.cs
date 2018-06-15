@@ -40,16 +40,23 @@ namespace StockInfo.Uwp
 
             builder.RegisterAssemblyTypes(assembly)
                 .Where(t => t.Name.EndsWith("Service"))
-                .AsImplementedInterfaces();
+                .AsImplementedInterfaces()
+                .PropertiesAutowired();
+
+            //builder.RegisterAssemblyTypes(assembly)
+            //  .Where(t => t.Name.EndsWith("ViewModel"))
+            //  .AsSelf();
 
             builder.RegisterAssemblyTypes(assembly)
                 .AssignableTo<MvxViewModel>()
                 .As<IMvxViewModel, MvxViewModel>()
-                .AsSelf();
+                .AsSelf()
+                .PropertiesAutowired();
 
-            IContainerProvider container = new AutofacMvxIocProvider(builder);
+
+            AutofacMvxIocProvider container = new AutofacMvxIocProvider(builder);                     
             IocProvider.Instance.InitializeContainer(container);
-
+            IocProvider.Instance.Container.Build();
             return container;
         }
 

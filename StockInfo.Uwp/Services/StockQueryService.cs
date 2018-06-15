@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StockInfo.Uwp.Models.Mops;
+using StockInfo.Uwp.RestClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +10,15 @@ namespace StockInfo.Uwp.Services
 {
     public class StockQueryService : IStockQueryService
     {
-        /// <summary>
-        /// Auto complete the stock name or code
-        /// </summary>
-        private const string TWSE_STOCK_AUTOCOMPLETE_API = "http://mops.twse.com.tw/mops/web/ajax_autoComplete";
+
+     
+        public async Task<List<StockInfoModel>> GetStockQueryList(string stock)
+        {
+            MopsRestApi api = new MopsRestApi();
+            List<StockInfoModel> stockListTask = await api.GetStockList(stock);
+            return stockListTask;
+        }
+
 
          
     }

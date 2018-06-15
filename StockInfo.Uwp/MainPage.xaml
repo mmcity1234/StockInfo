@@ -16,20 +16,35 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <NavigationView  >
+        <NavigationView>
+            <interactivity:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="ItemInvoked">
+                    <core:InvokeCommandAction Command="{Binding NativationItemInvokeCommand}" />
+                </core:EventTriggerBehavior>
+                <core:EventTriggerBehavior EventName="Loaded">
+                    <core:InvokeCommandAction Command="{Binding NativationLoadedCommand}" />
+                </core:EventTriggerBehavior>
+                <core:EventTriggerBehavior EventName="BackRequested">
+                    <core:InvokeCommandAction Command="{Binding NativationBackRequestedCommand}" />
+                </core:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
+            
             <NavigationView.MenuItems>
                 <NavigationViewItem Icon="Play" x:Uid="MainPage_NavigationItem_Info" Tag="StockInfo" />
                 <NavigationViewItem Icon="Save" x:Uid="MainPage_NavigationItem_ForeignInvestor" Tag="ForeignInvestor" />
             </NavigationView.MenuItems>
 
             <NavigationView.AutoSuggestBox>
-                <AutoSuggestBox x:Uid="MainPage_SuggestionBox" QueryIcon="Find">
+                <AutoSuggestBox x:Uid="MainPage_SuggestionBox" QueryIcon="Find" ItemsSource="{Binding SuggestionItemsSource}" Text="{Binding SearchStockText, Mode=TwoWay}" DisplayMemberPath="DisplayLabel">
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="QuerySubmitted">
-                            <core:InvokeCommandAction Command="{Binding AutoSuggestSearchCommand}" InputConverter="{StaticResource AutoSuggestConverter}" />
+                            <core:InvokeCommandAction Command="{Binding AutoSuggestSearchCommand}" />
                         </core:EventTriggerBehavior>
                         <core:EventTriggerBehavior EventName="TextChanged">
                             <core:InvokeCommandAction Command="{Binding AutoSuggestTextChangeCommand}" />
+                        </core:EventTriggerBehavior>
+                        <core:EventTriggerBehavior EventName="SuggestionChosen">
+                            <core:InvokeCommandAction Command="{Binding AutoSuggestChosenCommand}" />
                         </core:EventTriggerBehavior>
                     </interactivity:Interaction.Behaviors>
                 </AutoSuggestBox>
